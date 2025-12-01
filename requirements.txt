@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+streamlit
+streamlit-option-menu
+nbformat
+ipykernel
+folium
+streamlit-folium

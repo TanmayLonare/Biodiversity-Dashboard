@@ -1,0 +1,49 @@
+/* Global Dark Theme Overrides */
+[data-testid="stAppViewContainer"] {
+    background-image: linear-gradient(to right bottom, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+}
+
+[data-testid="stSidebar"] {
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glassmorphism Card Style */
+div.css-1r6slb0.e1tzin5v2, /* Streamlit metrics cards often have dynamic classes, targeting generic containers */
+[data-testid="stMetricValue"],
+.stDataFrame,
+.stPlotlyChart {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Plotly Chart Background Override */
+.js-plotly-plot .plotly .main-svg {
+    background: transparent !important;
+}

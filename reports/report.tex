@@ -1,0 +1,194 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{microtype}
+\usepackage{titlesec}
+
+% Professional margins
+\geometry{margin=0.75in}
+
+% Point to the figures directory - Updated for Overleaf compatibility
+\graphicspath{ {figures/} {images/} }
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    
+    % Logo 
+    \includegraphics[width=0.22\textwidth]{images/scms-logo.png}\par\vspace{0.5cm}
+    {\large Department of Scientific Computing, Modeling \& Simulation\par}
+    \vspace{1cm}
+    
+    % Project Title
+    {\huge\bfseries Mapping Global Biodiversity:\\[0.2cm]
+    Patterns, Trends, and Insights from GBIF Data\par}
+    \vspace{2.2cm}
+    
+    % Submitted By
+    {\Large\bfseries Submitted By\par}
+    \vspace{0.3cm}
+    {\large Tanmay Lonare - MT2405\par}
+    {\large Subject: Advance Python Programming\par}
+    \vspace{1.8cm}
+    
+    % Submitted To
+    {\Large\bfseries Submitted To\par}
+    \vspace{0.3cm}
+    {\large Dr. Bhalchandra Pujari\par}
+    \vspace{2.2cm}
+
+    % Logo 
+    \includegraphics[width=0.22\textwidth]{images/PU Logo.png}\par\vspace{0.2cm}
+    {\large\bfseries Savitribai Phule Pune University\par}
+    \vspace{0.3cm}
+       
+    \vfill
+\end{titlepage}
+
+\begin{abstract}
+\noindent This report presents a comprehensive analysis of global biodiversity observations derived from the GBIF dataset. By leveraging advanced data processing and visualization techniques, we uncover significant trends in species distribution, taxonomic composition, and temporal dynamics. A key finding is the exponential growth in observations from 2015 to 2022, correlated with the rise of digital citizen science platforms. This document serves to explain the underlying patterns in the data and answer critical questions regarding ecological shifts.
+\end{abstract}
+
+\vspace{1em}
+
+\section{Introduction}
+Biodiversity monitoring is essential for understanding the health of our planet's ecosystems. This project analyzes a cleaned dataset of over 99,000 observations to provide a data-driven narrative of global species distribution. The analysis focuses on three core pillars: taxonomic hierarchy, temporal evolution, and geospatial density.
+
+\section{Methodology}
+The raw data was acquired from the Global Biodiversity Information Facility (GBIF) and subjected to a rigorous cleaning pipeline using Python (Pandas). Key preprocessing steps included:
+\begin{itemize}
+    \item Handling missing values in critical fields like \texttt{year} and \texttt{stateProvince}.
+    \item Standardizing date formats to extract temporal features (Year, Month).
+    \item Validating geospatial coordinates to remove erroneous points.
+\end{itemize}
+Exploratory Data Analysis (EDA) was performed using Matplotlib, Seaborn, and Plotly to generate high-fidelity visualizations.
+
+\section{Results and Discussion}
+
+\subsection{Taxonomic Dominance}
+The dataset is heavily skewed towards two primary kingdoms: \textbf{Animalia} and \textbf{Plantae}. This distribution reflects the observational bias of human recorders, who are more likely to notice and record animals and plants compared to Fungi or microscopic organisms.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{kingdom_distribution.png}
+        \caption{Kingdom Distribution}
+        \label{fig:kingdom}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{top_10_phyla.png}
+        \caption{Top 10 Phyla}
+        \label{fig:phyla}
+    \end{subfigure}
+    \caption{Taxonomic Analysis. (a) Overwhelming dominance of Animalia and Plantae. (b) Chordata (vertebrates) and Arthropoda (insects) dominate animal observations.}
+    \label{fig:taxonomy}
+\end{figure}
+
+\subsection{Temporal Dynamics and The "Data Explosion"}
+One of the most striking features of the dataset is the temporal distribution of records.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{observations_by_year.png}
+    \caption{Exponential Growth of Observations (1950-2023). The sharp uptake post-2010 is clearly visible.}
+    \label{fig:growth}
+\end{figure}
+
+\subsubsection{Why is there a sudden jump in species observations in recent years?}
+\textbf{Observation:} Our analysis reveals a massive spike in data collection starting around 2018-2019.
+\begin{itemize}
+    \item \textbf{2018}: 5,434 observations
+    \item \textbf{2019}: 9,454 observations (74\% increase)
+    \item \textbf{2020}: 15,322 observations (62\% increase)
+\end{itemize}
+
+\textbf{Explanation:} This "sudden jump" is likely \textbf{not} a biological phenomenon (i.e., a sudden explosion of life) but rather a \textbf{technological and social one}.
+\begin{enumerate}
+    \item \textbf{Rise of Citizen Science Apps}: The proliferation of mobile apps like \textit{iNaturalist} and \textit{eBird} has democratized data collection. Users can easily snap a photo and upload it, leading to an exponential increase in verified observations.
+    \item \textbf{Mobile Connectivity}: Improved global internet access allows for real-time data uploading from remote field locations.
+    \item \textbf{COVID-19 Effect (2020-2021)}: Interestingly, the growth continued through the pandemic. With lockdowns in place, many people turned to local nature exploration, leading to a surge in backyard biodiversity recording.
+\end{enumerate}
+
+\subsection{Geospatial Distribution}
+The global map reveals where data is being collected.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{global_map_static.png}
+    \caption{Global Distribution of Observations. Note the density in North America and Europe.}
+    \label{fig:map}
+\end{figure}
+
+\subsubsection{Latitudinal Ranges}
+Different kingdoms exhibit distinct latitudinal preferences.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{latitude_boxplot.png}
+    \caption{Latitudinal Distribution by Kingdom. This boxplot reveals the geographical range of each kingdom.}
+    \label{fig:lat_boxplot}
+\end{figure}
+
+\section{Data Story: Q\&A}
+
+\textbf{Q1: Why do we see a seasonal dip in observations during certain months?} \\
+\textit{Answer:} The data shows a clear seasonality with peaks in spring and summer months (Northern Hemisphere bias).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{observations_by_month.png}
+    \caption{Seasonal Distribution of Observations. Peaks occur in mid-year months.}
+    \label{fig:season}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{seasonal_heatmap.png}
+    \caption{Observation Intensity (Year vs Month). This heatmap highlights the "data explosion" in recent years and the consistency of seasonal patterns.}
+    \label{fig:heatmap}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{phylum_violin.png}
+    \caption{Latitudinal Distribution of Top 5 Phyla. The violin plot shows the density of observations across latitudes, revealing that while Chordata is widespread, Arthropoda shows distinct clustering.}
+    \label{fig:violin}
+\end{figure}
+
+This is driven by two factors:
+\begin{enumerate}
+    \item \textbf{Biological Activity}: Many species are dormant or migratory during winter.
+    \item \textbf{Observer Behavior}: Human recorders are less likely to be outdoors collecting data during cold or inclement weather.
+\end{enumerate}
+
+\textbf{Q2: Is the dataset geographically representative?} \\
+\textit{Answer:} No. The geospatial heatmap reveals significant clustering in North America and Europe. This is a classic "sampling bias" where data density correlates with the location of active user bases and research institutions, rather than true biodiversity hotspots (which would be concentrated in the tropics).
+
+\textbf{Q3: Why are Fungi and Microorganisms underrepresented?} \\
+\textit{Answer:} Fungi (2,750 observations) and Protozoa (64 observations) are significantly undercounted compared to Animalia (58,000+). This is due to \textbf{detection bias}:
+\begin{itemize}
+    \item \textbf{Visibility}: Fungi are often ephemeral (only visible when fruiting) or microscopic.
+    \item \textbf{Identification Difficulty}: Identifying fungi often requires microscopy or genetic sequencing, whereas many birds and plants can be identified visually by amateurs.
+\end{itemize}
+
+\textbf{Q4: What does the dominance of Chordata tell us?} \\
+\textit{Answer:} The Phylum \textit{Chordata} (vertebrates) is one of the most recorded groups. This is likely due to \textbf{Charismatic Megafauna Bias}. Humans prefer to record "charismatic" animals like birds and mammals over invertebrates, despite invertebrates making up the vast majority of animal biomass and diversity.
+
+\textbf{Q5: How does the "Weekend Effect" influence data?} \\
+\textit{Answer:} Although not plotted here, citizen science data often shows spikes on Saturdays and Sundays. This further confirms that the dataset is driven by recreational activity rather than systematic scientific surveying.
+
+\section{Conclusion}
+This analysis demonstrates that while the GBIF dataset is a powerful tool for biodiversity monitoring, it is also a reflection of human behavior. The "sudden jumps" in data are markers of our increasing digital engagement with nature. Future work should focus on correcting for these sampling biases to model true species distribution shifts.
+
+\end{document}
