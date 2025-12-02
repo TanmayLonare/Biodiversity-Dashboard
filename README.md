@@ -2,8 +2,6 @@
 
 ## Author
 **Name:** Tanmay Lonare  
-**Roll No:** MT2405  
-**Subject:** Advance Python Programming
 
 ## Project Overview
 This project analyzes global biodiversity data from GBIF to uncover trends in species distribution, taxonomy, and temporal dynamics. It features a premium Streamlit dashboard and a comprehensive LaTeX report.
